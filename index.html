@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Relógio Simples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="relogio">
+
+            <div class="circulo" id="sc" style="--clr: #702bbe;"><i></i></div>
+            <div class="circulo circulo2" id="mn" style="--clr: #fee800;"><i></i></div>
+            <div class="circulo circulo3" id="hr" style="--clr: #04fc43;"><i></i></div>
+
+            <span style="--i:1;"><b>1</b></span>
+            <span style="--i:2;"><b>2</b></span>
+            <span style="--i:3;"><b>3</b></span>
+            <span style="--i:4;"><b>4</b></span>
+            <span style="--i:5;"><b>5</b></span>
+            <span style="--i:6;"><b>6</b></span>
+            <span style="--i:7;"><b>7</b></span>
+            <span style="--i:8;"><b>8</b></span>
+            <span style="--i:9;"><b>9</b></span>
+            <span style="--i:10;"><b>10</b></span>
+            <span style="--i:11;"><b>11</b></span>
+            <span style="--i:12;"><b>12</b></span>
+        </div><!-- RELOGIO -->
+
+        <!-- RELÓGIO DIGITAL -->
+        <div id="tempo">
+            <div id="horas" style="--clr: #04fc43;">00</div>
+            <div id="minutos" style="--clr: #fee800;">00</div>
+            <div id="segundos" style="--clr: #702bbe;">00</div>
+            <div id="ampm">PM</div>
+        </div><!-- TIME -->
+
+    </div><!-- CONTEINER -->
+
+    <script>
+        let hr = document.querySelector('#hr');
+        let mn = document.querySelector('#mn');
+        let sc = document.querySelector('#sc');
+
+        setInterval(() =>{
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * 6;
+            let ss = day.getSeconds() * 6;
+
+            hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
+            mn.style.transform = `rotateZ(${mm}deg)`;
+            sc.style.transform = `rotateZ(${ss}deg)`;
+
+            // RELÓGIO DIFITAL
+            let horas = document.getElementById('horas');
+            let minutos = document.getElementById('minutos');
+            let segundos = document.getElementById('segundos');
+            let ampm = document.getElementById('ampm');
+
+            let h = new Date().getHours();
+            let m = new Date().getMinutes();
+            let s = new Date().getSeconds();
+
+            let pm = h >= 12 ? "PM" : "AM";
+
+            // CONVETE 24HRS PARA 12HRS NO RELÓGIO
+            if (h > 12){
+                h = h - 12;
+            }
+
+            // ADICIONANDO ZEROS DEPOIS DO DIGITO NÚMERO
+            h = (h < 10) ? "0" + h : h
+            m = (m < 10) ? "0" + m : m
+            s = (s < 10) ? "0" + s : s
+        
+            horas.innerHTML = h;
+            minutos.innerHTML = m;
+            segundos.innerHTML = s;
+            ampm.innerHTML = pm;
+        })
+
+    </script>
+</body>
+</html>
