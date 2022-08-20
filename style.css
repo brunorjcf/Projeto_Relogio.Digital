@@ -57,7 +57,7 @@ body{
     z-index: 100000;
 }
 .relogio span{
-    position: absolute;
+    position: absolute; 
     inset: 20px;
     color: #fff;
     text-align: center;
@@ -68,7 +68,7 @@ body{
     opacity: 0.25;
     font-weight: 600;
     display: inline-block;
-    transform: rotate(calc(-30deg * var(--1)));
+    transform: rotate(calc(-30deg * var(--i)));
 }
 .circulo{
     position: absolute;
